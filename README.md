@@ -32,5 +32,14 @@ mkdir -p $HOME/images_build
 docker run -it --name freetz-build1 -v $HOME/images_build:/home/freetzuser/freetz/images freetz-builder /bin/bash
 ```
 
+## Share the builded images
+```bash
+cd $HOME/images_build
+python3 -m http.server
+```
+### Now open the your browser and download the file
+![grafik](https://github.com/user-attachments/assets/f02b6f03-a156-43dd-b9e0-af1784b76d5c)
+
+
 ## Should also work on windows as well
 If you have any questions, write an issue
