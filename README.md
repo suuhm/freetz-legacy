@@ -35,9 +35,10 @@ docker run -it --name freetz-build1 -v $HOME/images_build:/home/freetzuser/freet
 ## Share the builded images
 ```bash
 cd $HOME/images_build
-python3 -m http.server
+python3 -m http.server 7777
 ```
-### Now open the your browser and download the file
+
+### Now open the your browser on <YOUR_SERVER_IP>:7777 and download the file
 ![grafik](https://github.com/user-attachments/assets/f02b6f03-a156-43dd-b9e0-af1784b76d5c)
 
 
