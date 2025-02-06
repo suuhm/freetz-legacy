@@ -26,10 +26,9 @@ docker build -t freetz-builder .
 docker run -it --name freetz-build1 freetz-builder /bin/bash -c "cd freetz && exec /bin/bash"
 ```
 
-## Run container and start directly menuconfig
+## Run container and start directly `make menuconfig`
 ```bash
-mkdir -p $HOME/images_build
-docker run -it --name freetz-build1 -v $HOME/images_build:/home/freetzuser/built_images freetz-builder /bin/bash -c "cd freetz ; make menuconfig && exec /bin/bash"
+docker run -it --name freetz-build1 freetz-builder /bin/bash -c "cd freetz ; make menuconfig && exec /bin/bash"
 ```
 
 ## Run with mounted images folder (optional)
