@@ -33,10 +33,11 @@ RUN apt-get update && apt-get install -y \
 
 # Benutzer erstellen
 RUN useradd -m -s /bin/bash freetzuser
+RUN mkdir -p /home/freetzuser/freetz && chown -R freetzuser:freetzuser /home/freetzuser/freetz
 
 # Arbeitsverzeichnis setzen
 USER freetzuser
-WORKDIR /home/freetzuser/freetz
+WORKDIR /home/freetzuser
 
 # Freetz herunterladen
 RUN git clone https://github.com/Freetz/freetz.git && cd freetz 
