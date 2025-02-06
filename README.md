@@ -23,18 +23,24 @@ docker build -t freetz-builder .
 #docker ps -a
 #docker rm -f <CONTAINER_ID>
 
-docker run -it --name freetz-build1 freetz-builder /bin/bash
+docker run -it --name freetz-build1 freetz-builder /bin/bash -c "cd freetz && exec /bin/bash"
+```
+
+## Run container and start directly menuconfig
+```bash
+mkdir -p $HOME/images_build
+docker run -it --name freetz-build1 -v $HOME/images_build:/home/freetzuser/built_images freetz-builder /bin/bash -c "cd freetz ; make menuconfig && exec /bin/bash"
 ```
 
 ## Run with mounted images folder (optional)
 ```bash
 mkdir -p $HOME/images_build
-docker run -it --name freetz-build1 -v $HOME/images_build:/home/freetzuser/freetz/images freetz-builder /bin/bash
+docker run -it --name freetz-build1 -v $HOME/built_images:/home/freetzuser/built_images freetz-builder /bin/bash -c "cd freetz && exec /bin/bash"
 ```
 
 ## Share the builded images
 ```bash
-cd $HOME/images_build
+cd $HOME/built_images
 python3 -m http.server 7777
 ```
 
